@@ -107,25 +107,28 @@ int main()
 			}
 				//A card will be drawn by each game participant (player and computer).
 
-
+			int playerCard = 0;
+			int compCard = 0;
 			try {
 				if (playerDeck.getNumCards() == 0)
 					throw Deck::DeckUnderflowException("Player can not draw from empty deck");
-				int playerCard = playerDeck.draw();
+				playerCard = playerDeck.draw();
 
 			}
 			catch (const Deck::DeckUnderflowException& e) {
 				std::cerr << "Caught Deck Exception: " << e.what() << std::endl;
 				playerSidePile.draw();
+				//playerCard = playerDeck.draw();
 			}
 			try {
 				if (compDeck.getNumCards() == 0)
 					throw Deck::DeckUnderflowException("Computer can not draw from empty deck");
-				int compCard = compDeck.draw();
+				compCard = compDeck.draw();
 			}
 			catch (const Deck::DeckUnderflowException& e) {
 				std::cerr << "Caught Deck Exception: " << e.what() << std::endl;
 				compSidePile.draw();
+				//compCard = compDeck.draw();
 			}
 
 
@@ -397,20 +400,22 @@ If near the end of the game and winning, play even more conservatively. If near 
 			cout << "The number of cards in the computer's deck: " << compDeck.getNumCards() << "\n";
 		}
 		//A card will be drawn by each game participant (player and computer).
+		int playerCard = 0;
 		try {
 			if(playerDeck.getNumCards()==0)
 				throw Deck::DeckUnderflowException("Player can not draw from empty deck");
-			int playerCard = playerDeck.draw();
+			playerCard = playerDeck.draw();
 			
 		}
 		catch(const Deck::DeckUnderflowException& e) {
 			std::cerr << "Caught Deck Exception: " << e.what() << std::endl;
 			playerSidePile.draw();
 		}
+		int compCard = 0;
 		try {
 		if (compDeck.getNumCards() == 0)
 			throw Deck::DeckUnderflowException("Computer can not draw from empty deck");
-		int compCard = compDeck.draw();
+		compCard = compDeck.draw();
 		}
 		catch (const Deck::DeckUnderflowException& e) {
 			std::cerr << "Caught Deck Exception: " << e.what() << std::endl;
